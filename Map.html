@@ -15,152 +15,144 @@
 
 	<link rel="stylesheet" href="assets/css/main.css" />
 	<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-	
-
-
-<body class="homepage">
-	<div id="page-wrapper">
-
-		<!-- Header -->
-		<div id="header-wrapper" class="wrapper">
-			<div id="header">
-
-				<!-- Logo -->
-				<div id="logo">
-					<h1>
-						<a href="index.html">Terrorist Attack in the U.S</a>
-					</h1>
-					<p>Data visualization of terrorist attack data</p>
-				</div>
-
-				<!-- Nav -->
-				<nav id="nav">
-					<ul>
-						<li class="current">
-							<a href="index.html">Home</a>
-						</li>
-						<li>
-							<a href="Incidents.html">Visualization</a>
-							<ul>
-								<li>
-									<a href="Map.html">World Terro Map</a>
-								</li>
-								<li>
-									<a href="Incidents.html">Time Line</a>
-								</li>
-								<li>
-									<a href="#">The U.S</a>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<a href="#">User Test</a>
-						</li>
-						<li>
-							<a href="DataQuality.html">Data Quality</a>
-						</li>
-					</ul>
-				</nav>
-
-			</div>
-		</div>
-
-		<!-- Main -->
-		<div class="wrapper style3">
-			<div id="highlights" class="container">
-				<div class="title">Heat Map</div>
-
-				<div id="chartdiv" style="width:100%; height:600px;"></div>
 
 
 
-				<!-- <div style="position: absolute; left: 50%;">
-					<div style="position: relative; left: -50%;">
-						<button class="btn btn-danger boxed-action" id="delete-account">Choose another country</button>
+	<body class="homepage">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+			<div id="header-wrapper" class="wrapper">
+				<div id="header">
+
+					<!-- Logo -->
+					<div id="logo">
+						<h1>
+							<a href="index.html">Terrorist Attacks in the World</a>
+						</h1>
+						<p>Data visualization of terrorist attack data</p>
 					</div>
-				</div> -->
 
+					<!-- Nav -->
+					<nav id="nav">
+						<ul>
+							<li class="current">
+								<a href="index.html">Home</a>
+							</li>
+							<li>
+								<a href="Incidents.html">Visualization</a>
+								<ul>
+									<li>
+										<a href="Map.html">Geolocation</a>
+									</li>
+									<li>
+										<a href="Incidents.html">Num of Incidents</a>
+									</li>
+									<li>
+										<a href="Impact.html">Impact</a>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<a href="UserTest.html">User Test</a>
+							</li>
+							<li>
+								<a href="DataQuality.html">Data Quality</a>
+							</li>
+						</ul>
+					</nav>
 
-				<!-- <button onclick="change()">Change</button> -->
-			</div>
-		</div>
-	</div>
-	<!-- Footer -->
-	<div id="footer-wrapper" class="wrapper">
-		
-	</div>
-
-	</div>
-
-	<!-- Dialog -->
-	<dialog id="confirm-delete" class="site-dialog">
-		<header class="dialog-header">
-			<h1>Please Confirm</h1>
-		</header>
-		<div class="dialog-content">
-
-			<div class="test test1">
-				<div>
-					<label for="male">United States</label>
-					<input type="radio" name="sex" id="United States" />
 				</div>
-				<div>
-					<label for="male">United Kingdom</label>
-					<input type="radio" name="sex" id="United Kingdom" />
-				</div>
-				<div>
-					<label for="male">El Salvador</label>
-					<input type="radio" name="sex" id="El Salvador" />
-				</div>
-				<div>
-					<label for="male">Italy</label>
-					<input type="radio" name="sex" id="Italy" />
-				</div>
-				<div>
-					<label for="male">Spain</label>
-					<input type="radio" name="sex" id="Spain" />
-				</div>
-				<div>
-					<label for="male">Colombia</label>
-					<input type="radio" name="sex" id="Colombia" />
-				</div>
-				<div>
-					<label for="male">France</label>
-					<input type="radio" name="sex" id="France" />
-				</div>
-				<div>
-					<label for="male">Turkey</label>
-					<input type="radio" name="sex" id="Turkey" />
-				</div>
-				<div>
-					<label for="male">Guatemala</label>
-					<input type="radio" name="sex" id="Guatemala" />
-				</div>
-				<div>
-					<label for="male">Nicaragra</label>
-					<input type="radio" name="sex" id="Nicaragra" />
-				</div>
-				<div>
-					<label for="male">Argentina</label>
-					<input type="radio" name="sex" id="Argentina" />
-				</div>
-				<div>
-					<label for="male">China</label>
-					<input type="radio" name="sex" id="China" />
-				</div>
-
 			</div>
 
+			<!-- Main -->
+			<div class="wrapper style3">
+				<div id="highlights" class="container">
+					<div class="title">Global Terrorist Attacks</div>
 
+					<iframe width="100%" height="750" frameborder="0" src="https://baix.carto.com/builder/b2ef4efb-b886-404d-bac9-7978067ed3bf/embed"
+					 allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+
+
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<div id="footer-wrapper" class="wrapper">
 
 		</div>
-		<div class="btn-group cf">
-			<button class="btn-danger" id="confirm" onclick="change()">Confirm</button>
-			<button class="button style3" id="cancel">Cancel</button>
 
 		</div>
-	</dialog>
 
-</body>
+		<!-- Dialog -->
+		<dialog id="confirm-delete" class="site-dialog">
+			<header class="dialog-header">
+				<h1>Please Confirm</h1>
+			</header>
+			<div class="dialog-content">
+
+				<div class="test test1">
+					<div>
+						<label for="male">United States</label>
+						<input type="radio" name="sex" id="United States" />
+					</div>
+					<div>
+						<label for="male">United Kingdom</label>
+						<input type="radio" name="sex" id="United Kingdom" />
+					</div>
+					<div>
+						<label for="male">El Salvador</label>
+						<input type="radio" name="sex" id="El Salvador" />
+					</div>
+					<div>
+						<label for="male">Italy</label>
+						<input type="radio" name="sex" id="Italy" />
+					</div>
+					<div>
+						<label for="male">Spain</label>
+						<input type="radio" name="sex" id="Spain" />
+					</div>
+					<div>
+						<label for="male">Colombia</label>
+						<input type="radio" name="sex" id="Colombia" />
+					</div>
+					<div>
+						<label for="male">France</label>
+						<input type="radio" name="sex" id="France" />
+					</div>
+					<div>
+						<label for="male">Turkey</label>
+						<input type="radio" name="sex" id="Turkey" />
+					</div>
+					<div>
+						<label for="male">Guatemala</label>
+						<input type="radio" name="sex" id="Guatemala" />
+					</div>
+					<div>
+						<label for="male">Nicaragra</label>
+						<input type="radio" name="sex" id="Nicaragra" />
+					</div>
+					<div>
+						<label for="male">Argentina</label>
+						<input type="radio" name="sex" id="Argentina" />
+					</div>
+					<div>
+						<label for="male">China</label>
+						<input type="radio" name="sex" id="China" />
+					</div>
+
+				</div>
+
+
+
+			</div>
+			<div class="btn-group cf">
+				<button class="btn-danger" id="confirm" onclick="change()">Confirm</button>
+				<button class="button style3" id="cancel">Cancel</button>
+
+			</div>
+		</dialog>
+
+	</body>
 
 </html>
