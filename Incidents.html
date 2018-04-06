@@ -3,7 +3,7 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>amCharts examples</title>
+	<title>Num of Incidents</title>
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/jquery.dropotron.min.js"></script>
 	<script src="assets/js/skel.min.js"></script>
@@ -17,6 +17,27 @@
 
 	<link rel="stylesheet" href="assets/css/main.css" />
 	<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	<style>
+		#myBtn {
+			display: none;
+			position: fixed;
+			bottom: 80px;
+			right: 30px;
+			z-index: 99;
+			font-size: 18px;
+			border: none;
+			outline: none;
+			background-color: #282b34;
+			color: white;
+			cursor: pointer;
+			padding: 15px;
+			border-radius: 4px;
+		}
+
+		#myBtn:hover {
+			background-color: #555;
+		}
+	</style>
 	<style>
 		.btn-group {
 			padding: 15px 20px;
@@ -267,7 +288,7 @@
 		AmCharts.ready(function () {
 			// SERIAL CHART
 			chart = new AmCharts.AmSerialChart();
-
+			chart.fontSize = 14;
 			chart.dataProvider = chartData;
 			chart.marginLeft = 10;
 			chart.categoryField = "Year";
@@ -294,6 +315,7 @@
 
 			// GRAPH
 			graph = new AmCharts.AmGraph();
+			graph.title = "Incidents";
 			graph.type = "smoothedLine"; // this line makes the graph smoothed line.
 			graph.lineColor = "#d1655d";
 			graph.negativeLineColor = "#637bb6"; // this line makes the graph to change color when it drops below 0
@@ -320,6 +342,16 @@
 
 			chart.creditsPosition = "bottom-right";
 
+
+			var legend = new AmCharts.AmLegend();
+			legend.fontSize = 12;
+			legend.useGraphSettings = true;
+			// legend.marginRight = 100;
+			chart.addLegend(legend);
+
+
+			chart.addTitle(country);
+
 			// WRITE
 			chart.write("chartdiv");
 		});
@@ -330,7 +362,6 @@
 			chart.zoomToDates(new Date(2000, 0), new Date(2017, 0));
 		}
 		function changeCountry(temp) {
-			console.log(temp);
 			var code = temp;
 			for (var i = 0; i < country_list.length; i++) {
 				if (code == country_list[i].code) {
@@ -344,6 +375,7 @@
 					chartData.push(chartDataOrigin[i]);
 				}
 			}
+			chart.titles[0].text = country;
 			chart.validateData();
 			closeDialog();
 		}
@@ -353,7 +385,6 @@
 
 <body class="no-sidebar">
 	<div id="page-wrapper">
-
 		<!-- Header -->
 		<div id="header-wrapper" class="wrapper">
 			<div id="header">
@@ -365,7 +396,6 @@
 					</h1>
 					<p>Data visualization of terrorist attack data</p>
 				</div>
-
 				<!-- Nav -->
 				<nav id="nav">
 					<ul>
@@ -399,9 +429,10 @@
 		</div>
 
 		<!-- Main -->
-		<div class="wrapper style3">
+		<div id="intro-wrapper" class="wrapper style3">
+
 			<div id="highlights" class="container">
-				<div class="title">Time Line</div>
+				<div class="title">Num of Incidents</div>
 
 				<div id="chartdiv" style="width:100%; height:600px;margin-bottom:35px"></div>
 
@@ -410,15 +441,22 @@
 						<button class="btn btn-danger boxed-action" id="delete-account">Choose another country</button>
 					</div>
 				</div>
-
 			</div>
 		</div>
 	</div>
 	<!-- Footer -->
-	<div id="footer-wrapper" class="wrapper">
+	<!-- <div id="footer-wrapper" class="wrapper">
 
+	</div> -->
+
+	<div id="bottom">
+		<div class="foot-wrapper">
+
+			<div id="bottom-text">&copy; Carnegie Mellon University &nbsp;| &nbsp; Project by Siyu Chen &nbsp;&amp;&nbsp; Bai Xue &nbsp;| &nbsp;
+				<a href="https://github.com/huhuqql/IDS-midterm-project">Source Code</a>
+			</div>
+		</div>
 	</div>
-
 	</div>
 
 	<!-- Dialog -->
@@ -433,7 +471,7 @@
 				<script type="text/javascript">             
 
 					for (var i = 0; i < country_list.length; i++) {
-						$("#myUL").append("<li id=" + country_list[i].code + "><a>" + country_list[i].country + "</a></li>"); //在ul标签上动态添加li标签  
+						$("#myUL").append("<li id=" + country_list[i].code + "><a>" + country_list[i].country + "</a></li>");
 					}
 					$('li').on('click', function () {
 						changeCountry(this.id);
@@ -450,6 +488,32 @@
 
 		</div>
 	</dialog>
+
+	<button onclick="backTop()" id="myBtn" title="Go to top" style="padding-top:2px;">Top</button>
+
+	<script>
+		window.onscroll = function () { scrollFunction() };
+
+		function scrollFunction() {
+			if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+				document.getElementById("myBtn").style.display = "block";
+			} else {
+				document.getElementById("myBtn").style.display = "none";
+			}
+		}
+
+		function backTop() {
+			window.scrollBy(0, -100)
+
+			scrolldelay = setTimeout('backTop()', 10)
+
+			var sTop = document.documentElement.scrollTop + document.body.scrollTop
+
+			if (sTop === 0) {
+				clearTimeout(scrolldelay)
+			}
+		}
+	</script>
 
 </body>
 

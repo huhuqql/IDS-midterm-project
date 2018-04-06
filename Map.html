@@ -14,145 +14,148 @@
 	<script src="assets/js/index.js"></script>
 
 	<link rel="stylesheet" href="assets/css/main.css" />
+	<style>
+		#myBtn {
+			display: none;
+			position: fixed;
+			bottom: 80px;
+			right: 30px;
+			z-index: 99;
+			font-size: 18px;
+			border: none;
+			outline: none;
+			background-color: #282b34;
+			color: white;
+			cursor: pointer;
+			padding: 15px;
+			border-radius: 4px;
+		}
+
+		#myBtn:hover {
+			background-color: #555;
+		}
+	</style>
 	<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+</head>
 
 
 
-	<body class="no-sidebar">
-		<div id="page-wrapper">
+<body class="no-sidebar">
+	<div id="page-wrapper">
 
-			<!-- Header -->
-			<div id="header-wrapper" class="wrapper">
-				<div id="header">
+		<!-- Header -->
+		<div id="header-wrapper" class="wrapper">
+			<div id="header">
 
-					<!-- Logo -->
-					<div id="logo">
-						<h1>
-							<a href="index.html">Terrorist Attacks in the World</a>
-						</h1>
-						<p>Data visualization of terrorist attack data</p>
-					</div>
-
-					<!-- Nav -->
-					<nav id="nav">
-						<ul>
-							<li class="current">
-								<a href="index.html">Home</a>
-							</li>
-							<li>
-								<a href="#">Visualization</a>
-								<ul>
-									<li>
-										<a href="Map.html">Geolocation</a>
-									</li>
-									<li>
-										<a href="Incidents.html">Num of Incidents</a>
-									</li>
-									<li>
-										<a href="Impact.html">Impact</a>
-									</li>
-								</ul>
-							</li>
-							<li>
-								<a href="UserTest.html">User Test</a>
-							</li>
-							<li>
-								<a href="DataQuality.html">Data Quality</a>
-							</li>
-						</ul>
-					</nav>
-
-				</div>
-			</div>
-
-			<!-- Main -->
-			<div class="wrapper style3">
-				<div id="highlights" class="container">
-					<div class="title">Global Terrorist Attacks</div>
-
-					<iframe width="100%" height="750" frameborder="0" src="https://baix.carto.com/builder/b2ef4efb-b886-404d-bac9-7978067ed3bf/embed"
-					 allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
-
-
-				</div>
-			</div>
-		</div>
-		<!-- Footer -->
-		<div id="footer-wrapper" class="wrapper">
-
-		</div>
-
-		</div>
-
-		<!-- Dialog -->
-		<dialog id="confirm-delete" class="site-dialog">
-			<header class="dialog-header">
-				<h1>Please Confirm</h1>
-			</header>
-			<div class="dialog-content">
-
-				<div class="test test1">
-					<div>
-						<label for="male">United States</label>
-						<input type="radio" name="sex" id="United States" />
-					</div>
-					<div>
-						<label for="male">United Kingdom</label>
-						<input type="radio" name="sex" id="United Kingdom" />
-					</div>
-					<div>
-						<label for="male">El Salvador</label>
-						<input type="radio" name="sex" id="El Salvador" />
-					</div>
-					<div>
-						<label for="male">Italy</label>
-						<input type="radio" name="sex" id="Italy" />
-					</div>
-					<div>
-						<label for="male">Spain</label>
-						<input type="radio" name="sex" id="Spain" />
-					</div>
-					<div>
-						<label for="male">Colombia</label>
-						<input type="radio" name="sex" id="Colombia" />
-					</div>
-					<div>
-						<label for="male">France</label>
-						<input type="radio" name="sex" id="France" />
-					</div>
-					<div>
-						<label for="male">Turkey</label>
-						<input type="radio" name="sex" id="Turkey" />
-					</div>
-					<div>
-						<label for="male">Guatemala</label>
-						<input type="radio" name="sex" id="Guatemala" />
-					</div>
-					<div>
-						<label for="male">Nicaragra</label>
-						<input type="radio" name="sex" id="Nicaragra" />
-					</div>
-					<div>
-						<label for="male">Argentina</label>
-						<input type="radio" name="sex" id="Argentina" />
-					</div>
-					<div>
-						<label for="male">China</label>
-						<input type="radio" name="sex" id="China" />
-					</div>
-
+				<!-- Logo -->
+				<div id="logo">
+					<h1>
+						<a href="index.html">Terrorist Attacks in the World</a>
+					</h1>
+					<p>Data visualization of terrorist attack data</p>
 				</div>
 
+				<!-- Nav -->
+				<nav id="nav">
+					<ul>
+						<li class="current">
+							<a href="index.html">Home</a>
+						</li>
+						<li>
+							<a href="#">Visualization</a>
+							<ul>
+								<li>
+									<a href="Map.html">Geolocation</a>
+								</li>
+								<li>
+									<a href="Incidents.html">Num of Incidents</a>
+								</li>
+								<li>
+									<a href="Impact.html">Impact</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a href="UserTest.html">User Test</a>
+						</li>
+						<li>
+							<a href="DataQuality.html">Data Quality</a>
+						</li>
+					</ul>
+				</nav>
+
+			</div>
+		</div>
+
+		<!-- Main -->
+		<div class="wrapper style3">
+			<div id="highlights" class="container">
+				<div class="title">Global Terrorist Attacks</div>
+
+				<iframe width="100%" height="750" frameborder="0" src="https://baix.carto.com/builder/b2ef4efb-b886-404d-bac9-7978067ed3bf/embed"
+				 allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
 
 
 			</div>
-			<div class="btn-group cf">
-				<button class="btn-danger" id="confirm" onclick="change()">Confirm</button>
-				<button class="button style3" id="cancel">Cancel</button>
+		</div>
+	</div>
+	<!-- Footer -->
+	<!-- <div id="footer-wrapper" class="wrapper">
 
+		</div> -->
+
+	<div id="bottom">
+		<div class="foot-wrapper">
+
+			<div id="bottom-text">&copy; Carnegie Mellon University &nbsp;| &nbsp; Project by Siyu Chen &nbsp;&amp;&nbsp; Bai Xue &nbsp;| &nbsp;
+				<a href="https://github.com/huhuqql/IDS-midterm-project">Source Code</a>
 			</div>
-		</dialog>
+		</div>
+	</div>
+	</div>
 
-	</body>
+	<button onclick="backTop()" id="myBtn" title="Go to top" style="padding-top:2px;">Top</button>
+
+	<script>
+		window.onscroll = function () { scrollFunction() };
+
+		function scrollFunction() {
+			if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+				document.getElementById("myBtn").style.display = "block";
+			} else {
+				document.getElementById("myBtn").style.display = "none";
+			}
+		}
+
+		function backTop() {
+			window.scrollBy(0, -100)
+
+			scrolldelay = setTimeout('backTop()', 10)
+
+			var sTop = document.documentElement.scrollTop + document.body.scrollTop
+
+			if (sTop === 0) {
+				clearTimeout(scrolldelay)
+			}
+		}
+	</script>
+
+	<!-- Dialog -->
+	<dialog id="confirm-delete" class="site-dialog">
+		<header class="dialog-header">
+			<h1>Please Confirm</h1>
+		</header>
+		<div class="dialog-content">
+
+
+		</div>
+		<div class="btn-group cf">
+			<button class="btn-danger" id="confirm" onclick="change()">Confirm</button>
+			<button class="button style3" id="cancel">Cancel</button>
+
+		</div>
+	</dialog>
+
+</body>
 
 </html>

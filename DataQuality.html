@@ -7,17 +7,38 @@
 <html>
 
 <head>
-	<title>No Sidebar - Escape Velocity by HTML5 UP</title>
+	<title>Data Quality</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 	<link rel="stylesheet" href="assets/css/main.css" />
 	<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	<style>
+		#myBtn {
+			display: none;
+			position: fixed;
+			bottom: 80px;
+			right: 30px;
+			z-index: 99;
+			font-size: 18px;
+			border: none;
+			outline: none;
+			background-color: #282b34;
+			color: white;
+			cursor: pointer;
+			padding: 15px;
+			border-radius: 4px;
+		}
+
+		#myBtn:hover {
+			background-color: #555;
+		}
+	</style>
+
 </head>
 
 <body class="no-sidebar">
 	<div id="page-wrapper">
-
 		<!-- Header -->
 		<div id="header-wrapper" class="wrapper">
 			<div id="header">
@@ -137,23 +158,57 @@
 		</div>
 	</div>
 	<!-- Footer -->
-	<div id="footer-wrapper" class="wrapper">
-		<div class="title">Other Concern</div>
-		<div id="footer" class="container">
-
-		</div>
+	<!-- <div id="footer-wrapper" class="wrapper">
 		<div id="copyright">
 			<ul>
-				<li>&copy; Untitled.</li>
-				<li>Design:
-					<a href="http://html5up.net">HTML5 UP</a>
+				<li>&copy; Carnegie Mellon University</li>
+				<li>Source:
+					<a href="http://www.start.umd.edu/gtd/">Global Terrorism Database</a>
+				</li>
+				<li>Code:
+					<a href="https://github.com/huhuqql/IDS-midterm-project">GitHub Repo</a>
 				</li>
 			</ul>
 		</div>
+	</div> -->
+
+	<div id="bottom">
+		<div class="foot-wrapper">
+
+			<div id="bottom-text">&copy; Carnegie Mellon University &nbsp;| &nbsp; Project by Siyu Chen &nbsp;&amp;&nbsp; Bai Xue &nbsp;| &nbsp;
+				<a href="https://github.com/huhuqql/IDS-midterm-project">Source Code</a>
+			</div>
+		</div>
 	</div>
 
 	</div>
 
+
+	<button onclick="backTop()" id="myBtn" title="Go to top" style="padding-top:2px;">Top</button>
+
+	<script>
+		window.onscroll = function () { scrollFunction() };
+
+		function scrollFunction() {
+			if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+				document.getElementById("myBtn").style.display = "block";
+			} else {
+				document.getElementById("myBtn").style.display = "none";
+			}
+		}
+
+		function backTop() {
+			window.scrollBy(0, -100)
+
+			scrolldelay = setTimeout('backTop()', 10)
+
+			var sTop = document.documentElement.scrollTop + document.body.scrollTop
+
+			if (sTop === 0) {
+				clearTimeout(scrolldelay)
+			}
+		}
+	</script>
 	<!-- Scripts -->
 
 	<script src="assets/js/jquery.min.js"></script>

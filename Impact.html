@@ -4,20 +4,40 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>amCharts examples</title>
-	<link rel="stylesheet" href="style.css" type="text/css">
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/jquery.dropotron.min.js"></script>
 	<script src="assets/js/skel.min.js"></script>
 	<script src="assets/js/skel-viewport.min.js"></script>
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
-	<script src="assets/js/index.js"></script>
 	<script src="amcharts/amcharts.js" type="text/javascript"></script>
 	<script src="amcharts/serial.js" type="text/javascript"></script>
 	<script src="terro-impact.js" type="text/javascript"></script>
+	<script src="country.js" type="text/javascript"></script>
 
 	<link rel="stylesheet" href="assets/css/main.css" />
 	<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	<style>
+		#myBtn {
+			display: none;
+			position: fixed;
+			bottom: 80px;
+			right: 30px;
+			z-index: 99;
+			font-size: 18px;
+			border: none;
+			outline: none;
+			background-color: #282b34;
+			color: white;
+			cursor: pointer;
+			padding: 15px;
+			border-radius: 4px;
+		}
+
+		#myBtn:hover {
+			background-color: #555;
+		}
+	</style>
 	<style>
 		.btn-group {
 			padding: 15px 20px;
@@ -96,7 +116,7 @@
 		}
 
 		.site-dialog {
-			overflow: hidden;
+			max-height: 500px;
 			width: 95%;
 			max-width: 600px;
 			padding: 0;
@@ -126,12 +146,16 @@
 		}
 
 		.site-dialog .dialog-header {
-			padding: 12px 20px;
+			padding: 12px 10px;
 			background-color: #434a54;
 		}
 
 		.site-dialog .dialog-content {
-			padding: 30px 20px;
+			overflow-y: auto;
+			overflow-x: hidden;
+			padding: 30px 10px;
+			max-width: 600px;
+			max-height: 500px;
 			color: #555;
 			background-color: #fff;
 		}
@@ -142,21 +166,69 @@
 			margin-bottom: 0;
 		}
 
-
-		div.test {
-			width: 600px;
-			margin: 10px;
+		#myInput {
+			background-image: url('https://static.runoob.com/images/mix/searchicon.png');
+			background-position: 10px 12px;
+			background-repeat: no-repeat;
+			width: 100%;
+			font-size: 16px;
+			padding: 12px 20px 12px 40px;
+			border: 1px solid #ddd;
+			margin-bottom: 12px;
+			max-width: 600px;
 		}
 
-		div.test1 div {
-			width: 150px;
-			height: 35px;
-			margin: 10px;
-			display: inline-block;
+		#myUL {
+			list-style-type: none;
+			padding: 0;
+			margin: 0;
+		}
+
+		#myUL li a {
+			border: 1px solid #ddd;
+			max-width: 600px;
+			margin-top: -1px;
+			background-color: #f6f6f6;
+			padding: 12px;
+			text-decoration: none;
+			font-size: 18px;
+			color: black;
+			display: block;
+		}
+
+		#myUL li a.header {
+			background-color: #e2e2e2;
+			cursor: default;
+		}
+
+		#myUL li a:hover:not(.header) {
+			background-color: #eee;
 		}
 	</style>
 
+
 	<script type="text/javascript">
+		function searchList() {
+			var input, filter, ul, li, a, i;
+			input = document.getElementById('myInput');
+			filter = input.value.toUpperCase();
+			ul = document.getElementById("myUL");
+			li = ul.getElementsByTagName('li');
+			for (i = 0; i < li.length; i++) {
+				a = li[i].getElementsByTagName("a")[0];
+				if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+					li[i].style.display = "";
+				} else {
+					li[i].style.display = "none";
+				}
+			}
+		}
+
+
+	</script>
+	<script type="text/javascript">
+
+		var closeDialog;
 		$(document).ready(function () {
 			var $accountDelete = $('#delete-account'),
 				$accountDeleteDialog = $('#confirm-delete'),
@@ -180,6 +252,13 @@
 				$accountDeleteDialog.removeClass('dialog-scale');
 				clearTimeout(transition);
 			});
+
+
+			closeDialog = function () {
+				$accountDeleteDialog[0].close();
+				$accountDeleteDialog.removeClass('dialog-scale');
+				clearTimeout(transition);
+			}
 		});
 	</script>
 	<script>
@@ -195,9 +274,6 @@
 
 		AmCharts.ready(function () {
 			// SERIAL CHART
-			chart = new AmCharts.AmSerialChart();
-
-
 			chart = new AmCharts.AmSerialChart();
 			chart.dataProvider = chartData;
 			chart.categoryField = "Year";
@@ -230,6 +306,7 @@
 			chart.addValueAxis(valueAxis);
 
 			var graph_1 = new AmCharts.AmGraph();
+			graph_1.title = "Injury";
 			graph_1.valueField = "Terrorism injuries (GTD) (number of people injured)";
 			graph_1.balloonText = "[[Entity]] [[category]]<br><b><span style='font-size:14px;'>[[value]] </span>Injuries</b>";
 			graph_1.type = "column";
@@ -239,6 +316,7 @@
 			chart.addGraph(graph_1);
 
 			var graph_2 = new AmCharts.AmGraph();
+			graph_2.title = "Fatality";
 			graph_2.valueField = "Terrorism (deaths)";
 			graph_2.balloonText = "[[Entity]] [[category]]<br><b><span style='font-size:14px;'>[[value]] </span>Fatalities</b>";
 			graph_2.type = "column";
@@ -251,15 +329,20 @@
 			var chartCursor = new AmCharts.ChartCursor();
 			chartCursor.cursorAlpha = 0;
 			chartCursor.cursorPosition = "mouse";
-			chartCursor.categoryBalloonDateFormat = "YYYY"; 
+			chartCursor.categoryBalloonDateFormat = "YYYY";
 			chart.addChartCursor(chartCursor);
 
 			// SCROLLBAR
 			var chartScrollbar = new AmCharts.ChartScrollbar();
 			chart.addChartScrollbar(chartScrollbar);
 
-			chart.creditsPosition = "bottom-right";
+			var legend = new AmCharts.AmLegend();
+			legend.fontSize = 12;
+			legend.useGraphSettings = true;
+			chart.addLegend(legend);
 
+			chart.creditsPosition = "bottom-right";
+			chart.addTitle(country);
 			// WRITE
 			chart.write("chartdiv");
 		});
@@ -269,47 +352,13 @@
 			// different zoom methods can be used - zoomToIndexes, zoomToDates, zoomToCategoryValues
 			chart.zoomToDates(new Date(2000, 0), new Date(2017, 0));
 		}
-		function change() {
-			if (document.getElementById("World").checked) {
-				country = "World";
+		function changeCountry(temp) {
+			var code = temp;
+			for (var i = 0; i < country_list.length; i++) {
+				if (code == country_list[i].code) {
+					country = country_list[i].country;
+				}
 			}
-			else if (document.getElementById("United States").checked) {
-				country = "United States";
-			}
-			else if (document.getElementById("United Kingdom").checked) {
-				country = "United Kingdom";
-			}
-			else if (document.getElementById("El Salvador").checked) {
-				country = "El Salvador";
-			}
-			else if (document.getElementById("Italy").checked) {
-				country = "Italy";
-			}
-			else if (document.getElementById("Spain").checked) {
-				country = "Spain";
-			}
-			else if (document.getElementById("Colombia").checked) {
-				country = "Colombia";
-			}
-			else if (document.getElementById("France").checked) {
-				country = "France";
-			}
-			else if (document.getElementById("Turkey").checked) {
-				country = "Turkey";
-			}
-			else if (document.getElementById("Guatemala").checked) {
-				country = "Guatemala";
-			}
-			else if (document.getElementById("Nicaragua").checked) {
-				country = "Nicaragua";
-			}
-			else if (document.getElementById("Argentina").checked) {
-				country = "Argentina";
-			}
-			// else if (document.getElementById("China").checked) {
-			// 	country = "China";
-			// }
-
 
 			chartData.splice(0, chartData.length);
 			for (var i = 0; i < chartDataOrigin_impact.length; i++) {
@@ -317,7 +366,9 @@
 					chartData.push(chartDataOrigin_impact[i]);
 				}
 			}
+			chart.titles[0].text = country;
 			chart.validateData();
+			closeDialog();
 		}
 	</script>
 </head>
@@ -390,10 +441,19 @@
 
 
 	</div>
-	<!-- Footer -->
-	<div id="footer-wrapper" class="wrapper">
 
+	<div id="bottom">
+		<div class="foot-wrapper">
+
+			<div id="bottom-text">&copy; Carnegie Mellon University &nbsp;| &nbsp; Project by Siyu Chen &nbsp;&amp;&nbsp; Bai Xue &nbsp;| &nbsp;
+				<a href="https://github.com/huhuqql/IDS-midterm-project">Source Code</a>
+			</div>
+		</div>
 	</div>
+	<!-- Footer -->
+	<!-- <div id="footer-wrapper" class="wrapper">
+
+	</div> -->
 
 	</div>
 
@@ -403,72 +463,53 @@
 			<h1>Please Select</h1>
 		</header>
 		<div class="dialog-content">
+			<input type="text" id="myInput" onkeyup="searchList()" placeholder="Search...">
 
-			<div class="test test1">
-				<div>
-					<label for="male">The World</label>
-					<input type="radio" name="sex" id="World" />
-				</div>
-				<div>
-					<label for="male">United States</label>
-					<input type="radio" name="sex" id="United States" />
-				</div>
-				<div>
-					<label for="male">United Kingdom</label>
-					<input type="radio" name="sex" id="United Kingdom" />
-				</div>
-				<div>
-					<label for="male">El Salvador</label>
-					<input type="radio" name="sex" id="El Salvador" />
-				</div>
-				<div>
-					<label for="male">Italy</label>
-					<input type="radio" name="sex" id="Italy" />
-				</div>
-				<div>
-					<label for="male">Spain</label>
-					<input type="radio" name="sex" id="Spain" />
-				</div>
-				<div>
-					<label for="male">Colombia</label>
-					<input type="radio" name="sex" id="Colombia" />
-				</div>
-				<div>
-					<label for="male">France</label>
-					<input type="radio" name="sex" id="France" />
-				</div>
-				<div>
-					<label for="male">Turkey</label>
-					<input type="radio" name="sex" id="Turkey" />
-				</div>
-				<div>
-					<label for="male">Guatemala</label>
-					<input type="radio" name="sex" id="Guatemala" />
-				</div>
-				<div>
-					<label for="male">Nicaragua</label>
-					<input type="radio" name="sex" id="Nicaragua" />
-				</div>
-				<div>
-					<label for="male">Argentina</label>
-					<input type="radio" name="sex" id="Argentina" />
-				</div>
-				<!-- <div>
-					<label for="male">China</label>
-					<input type="radio" name="sex" id="China" />
-				</div> -->
+			<ul id="myUL">
+				<script type="text/javascript">             
 
-			</div>
-
+					for (var i = 0; i < country_list.length; i++) {
+						$("#myUL").append("<li id=" + country_list[i].code + "><a>" + country_list[i].country + "</a></li>");
+					}
+					$('li').on('click', function () {
+						changeCountry(this.id);
+					});    
+				</script>
+			</ul>
 
 
 		</div>
 		<div class="btn-group cf">
-			<button class="btn-danger" id="confirm" onclick="change()">Confirm</button>
 			<button class="button style3" id="cancel">Cancel</button>
 
 		</div>
 	</dialog>
+
+	<button onclick="backTop()" id="myBtn" title="Go to top" style="padding-top:2px;">Top</button>
+
+	<script>
+		window.onscroll = function () { scrollFunction() };
+
+		function scrollFunction() {
+			if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+				document.getElementById("myBtn").style.display = "block";
+			} else {
+				document.getElementById("myBtn").style.display = "none";
+			}
+		}
+
+		function backTop() {
+			window.scrollBy(0, -100)
+
+			scrolldelay = setTimeout('backTop()', 10)
+
+			var sTop = document.documentElement.scrollTop + document.body.scrollTop
+
+			if (sTop === 0) {
+				clearTimeout(scrolldelay)
+			}
+		}
+	</script>
 
 </body>
 

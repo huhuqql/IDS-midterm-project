@@ -2,43 +2,198 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <title></title>
-    <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
-    <link href="//cdn.bootcss.com/amazeui/2.7.2/css/amazeui.min.css" rel="stylesheet">
-    <script>  
-        $(function () {
-            $("#lhnum").change(function () {
-                var lhnum = $("#lhnum").val();
-                for (var i = 1; i <= lhnum; i++) {
-                    $("#lhul").append("<li id='lhli'>" + i + "号楼层数：<input class='am-input-field' type='text' id='" + i + "lcnum' /><button class='am-btn am-btn-success' id='" + i + "' onclick='addHouselc(this.id)'>+</button><ul id='lcul" + i + "'></ul></li>");
-                }
-            });
-        });
-        function addHouselc(id) {
-            var obj = id + "lcnum";
-            var num = $("#" + obj + "").val();
-            for (var j = 1; j <= num; j++) {
-                $("#lcul" + id + "").append("<li>第" + j + "层户数：<input class='am-input-field' type='text' id='" + j + "zhnum' /></li>");
-            }
-        }  
-    </script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/css/main.css" />
     <style>
-        li {
-            list-style-type: none;
+        #myBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            z-index: 99;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            background-color: red;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 4px;
+        }
+
+        #myBtn:hover {
+            background-color: #555;
         }
     </style>
 </head>
 
-<body>
-    添加小区:
-    <input type="text" name="" id="xq" value="" />
-    <br /> 添加楼号:
-    <input type="number" name="" id="lhnum" value="" />
-    <br />
-    <ul id="lhul" class="am-list am-list-static">
 
-    </ul>
+<body class="no-sidebar">
+    <div id="page-wrapper">
+        <!-- Header -->
+        <div id="header-wrapper" class="wrapper">
+            <div id="header">
+
+                <!-- Logo -->
+                <div id="logo">
+                    <h1>
+                        <a href="index.html">Terrorist Attacks in the World</a>
+                    </h1>
+                    <p>Data visualization of terrorist attack data</p>
+                </div>
+
+                <!-- Nav -->
+                <nav id="nav">
+                    <ul>
+                        <li class="current">
+                            <a href="index.html">Home</a>
+                        </li>
+                        <li>
+                            <a href="#">Visualization</a>
+                            <ul>
+                                <li>
+                                    <a href="Map.html">Geolocation</a>
+                                </li>
+                                <li>
+                                    <a href="Incidents.html">Num of Incidents</a>
+                                </li>
+                                <li>
+                                    <a href="Impact.html">Impact</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="UserTest.html">User Test</a>
+                        </li>
+                        <li>
+                            <a href="DataQuality.html">Data Quality</a>
+                        </li>
+                    </ul>
+                </nav>
+
+            </div>
+        </div>
+
+        <!-- Main -->
+        <div class="wrapper style2">
+            <div class="title">Accountability</div>
+            <div id="highlights" class="container">
+                <h2>Accountability</h2>
+                <p style="color:black">This document reflects the collection and coding rules for the Global Terrorism Database (GTD), maintained
+                    by the National Consortium for the Study of Terrorism and Responses to Terrorism (START).The criteria
+                    and coding system were designed to be completely transparent and available to all future users of the
+                    database. As such, the commitment was made to describe coding decisions wherever possible.</p>
+            </div>
+        </div>
+
+        <div class="wrapper style3">
+            <div class="title">Completeness</div>
+            <div id="main" class="container">
+                <h2>Completeness</h2>
+                <p style="color:black">The completeness of this data set has been maximized, but still incomplete. According to GTD, the process
+                    begins with a universe of over one million media articles on any topic published daily worldwide in order
+                    to identify the relatively small subset of articles that describe terrorist attacks. The GTD team gathered
+                    the articles through a subscription to the Metabase Application Programming Interface (API) provided
+                    by Moreover Technologies, Inc. These articles are then processed using more sophisticated natural language
+                    processing (NLP) and machine learning techniques to further refine the results, remove duplicate articles,
+                    and identify articles that are likely to be relevant.In addition, each month, GTD researchers at START
+                    manually review approximately 16,000 articles and identify attacks to be added to the GTD.</p>
+                <p style="color:black">However, the data is still missing one part of the data, as we can see from the line chart. The data of year
+                    1993 was excluded from the data set by GTD to prevent misintepreting the data, due to the challenges
+                    of retrospective data collection for events that happened more than 20 years ago, the number of 1993
+                    cases for which sources were identified is only 15% of estimated attacks. </p>
+
+                <!-- <div class="6u 12u(mobile)">
+                                <img src="images/missing 1993.png" alt="" />
+                            </div> -->
+            </div>
+        </div>
+        <!-- Highlights -->
+        <div class="wrapper style2">
+            <div class="title">Correctness</div>
+            <div id="highlights" class="container">
+                <h1>Correctness</h1>
+                <p style="color:black">The dataset is correct if used to identify certain part of terrorist attacks throughout the world. However,
+                    it still has its own limitations. As noted, The GTD defines a terrorist attack as the threatened or actual
+                    use of illegal force and violence by a non-state actor to attain a political, economic, religious, or
+                    social goal through fear, coercion, or intimidation. Therefore, there are certain criteria that an incident
+                    must satisfy to be documented in this dataset. These criteria, as noted by GTD, include:
+                </p>
+                <p style="margin-top:-25px;color:black">Criterion 1: The act must be aimed at attaining a political, economic, religious, or social goal.</p>
+                <p style="margin-top:-25px;color:black">Criterion 2: There must be evidence of an intention to coerce, intimidate, or convey some other message to
+                    a larger audience (or audiences) than the immediate victims.</p>
+                <p style="margin-top:-25px;color:black">Criterion 3: The action must be outside the context of legitimate warfare activities. </p>
+                <p style="margin-top:-25px;color:black">However, from these criteria, we can see clearly that every single data was censored manually by the member
+                    of GTD, and there is always defitional overlapping between terrorism and other types of crime. Therefore,
+                    even with the criteria, it is hard to say every incident in this dataset is truely qualified as a terrorist
+                    attack.
+                </p>
+            </div>
+        </div>
+        <div class="wrapper style3">
+            <div class="title">Coherence</div>
+            <div id="highlights" class="container">
+
+                <h1>Coherence</h1>
+                <p style="color:black">This dataset is quite coherent for several reasons.</p>
+                <p style="margin-top:-25px;color:black">First, the source of this dataset, as mentioned, is highly reliable. The original dataset has actually been
+                    through several modifications, including improving the labelling of the type of terrorist attacks, naming
+                    of district, city, country and region, re-classifying of several sections due to underutilization, etc.
+                    Each year, the coherence of the data set will be improved by GTD: New weapon types are added, unknown
+                    injuries and fatalities are identified through some evidence, etc.
+                </p>
+                <p style="margin-top:-25px;color:black">Second, by going through several graphs by glance, the results match our expectation quite well. For example,
+                    if someone wants to identify some key incidents happended in the U.S from the visualization. He will
+                    immediately notice the incredibly high injuries and fatalities in the year 2001 (as shown in the picture),
+                    which is due to the 911 terrorist attack.</p>
+                <div class="6u 12u(mobile)">
+                    <img src="images/us2001.png" alt="" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="bottom">
+        <div class="foot-wrapper">
+            <div id="bottom-text">2011 Nova all rights reserved.
+                <a href="http://www.luiszuno.com"> Luiszuno.com</a>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+    <script>
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("myBtn").style.display = "block";
+            } else {
+                document.getElementById("myBtn").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.dropotron.min.js"></script>
+    <script src="assets/js/skel.min.js"></script>
+    <script src="assets/js/skel-viewport.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+    <script src="assets/js/main.js"></script>
+
 </body>
 
 </html>

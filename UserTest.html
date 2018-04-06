@@ -7,12 +7,33 @@
 <html>
 
 <head>
-	<title>No Sidebar - Escape Velocity by HTML5 UP</title>
+	<title>User Test</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 	<link rel="stylesheet" href="assets/css/main.css" />
 	<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	<style>
+		#myBtn {
+			display: none;
+			position: fixed;
+			bottom: 80px;
+			right: 30px;
+			z-index: 99;
+			font-size: 18px;
+			border: none;
+			outline: none;
+			background-color: #282b34;
+			color: white;
+			cursor: pointer;
+			padding: 15px;
+			border-radius: 4px;
+		}
+
+		#myBtn:hover {
+			background-color: #555;
+		}
+	</style>
 </head>
 
 <body class="no-sidebar">
@@ -62,16 +83,75 @@
 			</div>
 		</div>
 
-	<!-- Footer -->
-	<div id="footer-wrapper" class="wrapper">
-		<div class="title">Other Concern</div>
-		<div id="footer" class="container">
+		<div class="wrapper style3">
+			<div id="highlights" class="container">
+				<div class="title">User Test</div>
 
+				<p style="color:black">
+					We have modified our design for the Impact bar chart and Number of Incidents trend graph based on the feedback we received
+					from users. Initially, the interaction components for these two graphs were designed as follows: we sorted the countries
+					based on the total number of terrorist attacks from 1970 to 2016 and selected the top ten to be displayed on the menu.
+					the user will be prompted to choose from the top ten countries and the graph will only display data that pertains to
+					the selected country (see Figure 1).
+				</p>
+				<div>
+					<img style="width:50%" src="images/usertest1.png" alt="" />
+				</div>
+
+				<p style="color:black">
+					However, some of the users expressed that they would like to have the option to explore countries outside of the top ten
+					list. Therefore, we replaced the top-ten-countries menu with a search bar function. Now when the user clicks on the
+					button “Choose Another Country”, he/she will be prompted to search for any country he/she will like to explore (see
+					Figure 2).
+				</p>
+
+
+				<div>
+					<img style="width:50%" src="images/usertest2.png" alt="" />
+				</div>
+
+				<p style="color:black">
+					In addition, we also made some minor tweaks to the graphs including inserting legends, changing layouts and adjusting font
+					size based on the user feedback.
+				</p>
+			</div>
 		</div>
-		
+
+		<div id="bottom">
+			<div class="foot-wrapper">
+
+				<div id="bottom-text">&copy; Carnegie Mellon University &nbsp;| &nbsp; Project by Siyu Chen &nbsp;&amp;&nbsp; Bai Xue &nbsp;| &nbsp;
+					<a href="https://github.com/huhuqql/IDS-midterm-project">Source Code</a>
+				</div>
+			</div>
+		</div>
 	</div>
 
-	</div>
+	<button onclick="backTop()" id="myBtn" title="Go to top" style="padding-top:2px;">Top</button>
+
+	<script>
+		window.onscroll = function () { scrollFunction() };
+
+		function scrollFunction() {
+			if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+				document.getElementById("myBtn").style.display = "block";
+			} else {
+				document.getElementById("myBtn").style.display = "none";
+			}
+		}
+
+		function backTop() {
+			window.scrollBy(0, -100)
+
+			scrolldelay = setTimeout('backTop()', 10)
+
+			var sTop = document.documentElement.scrollTop + document.body.scrollTop
+
+			if (sTop === 0) {
+				clearTimeout(scrolldelay)
+			}
+		}
+	</script>
 
 	<!-- Scripts -->
 

@@ -1613,7 +1613,7 @@
 			background: url("images/overlay.png");
 		}
 
-	#footer-wrapper {
+	/* #footer-wrapper {
 		background: #282b34 url("images/overlay.png");
 		color: #eee;
 		color: rgba(255, 255, 255, 0.5);
@@ -1699,7 +1699,7 @@
 
 		#footer-wrapper .feature-list h3:before {
 			background: #3d4249 url("images/overlay.png");
-		}
+		} */
 
 /* Logo */
 
@@ -1820,7 +1820,7 @@
 			.button {
 				padding: 0 2.25em 0 2.25em;
 				font-size: 0.9em;
-				min-width: 12em;
+
 				height: 4em;
 				line-height: 4em;
 			}
@@ -2687,4 +2687,43 @@
 							margin-top: 0;
 						}
 
+	}
+
+
+
+	#bottom{
+		position: relative;
+		width: 100%;
+		font-size: 15px;
+		line-height: 1.5em;
+		line-height: 60px;
+		color: #868686;
+		background: #282b34;
+	}
+	
+	#bottom #bottom-text{
+		overflow: hidden;
+		margin-left: 30px;	
+	}
+	
+	#bottom a{
+		color: #AFEAF9;
+		text-decoration: none;
+	}
+	
+	#bottom #to-top{
+		position: absolute;
+		right: 30px;
+		top: -22px;
+		width: 33px;
+		height: 33px;
+		background: url(../img/to-top.png) no-repeat;
+		cursor: pointer;
+	}
+
+	.foot-wrapper{
+		width: 100%;
+		margin: 0px auto;
+		padding-top:1px;
+		position: relative;
 	}
